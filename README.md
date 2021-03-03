@@ -16,5 +16,5 @@ The only departments available are the biology and chemistry departments. Doing 
 *\>clear [number of messages]*  
 Will clear a specified amount of messages sent prior to the usage of the command.
 
-*\>rolemenu*
+*\>rolemenu*  
 Will open a role menu with relevant programs in which students can react to the message with an emoji to assign themselves to a program.
