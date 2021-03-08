@@ -114,6 +114,20 @@ async def on_raw_reaction_remove(payload):
     if str(emoji) == "⭐":
         await user.remove_roles(Others)
 
+@client.event
+async def on_message(message):
+    if "discord.gg" in message.content.lower():
+        await message.delete()
+        await message.author.send("**Your discord invite was deleted as per the rules of the ConU BIO/BIOCHEM/CHEM server.** \n If you wanted to send a discord invite to a specific individual, feel free to directly message them the invitation.")
+        return
+    await client.process_commands(message)
 
+@client.event
+async def on_message_edit(before, message):
+    if "discord.gg" in message.content.lower():
+        await message.delete()
+        await message.author.send("**Your discord invite was deleted as per the rules of the ConU BIO/BIOCHEM/CHEM server.** \n If you wanted to send a discord invite to a specific individual, feel free to directly message them the invitation.")
+        return
+    
 
 client.run(SECRET_KEY)

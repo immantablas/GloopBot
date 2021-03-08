@@ -18,3 +18,7 @@ Will clear a specified amount of messages sent prior to the usage of the command
 
 *\>rolemenu*  
 Will open a role menu with relevant programs in which students can react to the message with an emoji to assign themselves to a program.
+
+### **Moderation Utilities**
+- The bot will automatically delete any discord invites sent on the server and send the user a message.
+- The bot will automatically delete messages which are edited to have a discord invite and send the user a message.
