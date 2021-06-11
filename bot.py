@@ -43,8 +43,8 @@ async def drop(ctx, *args):
 @client.command()
 @commands.is_owner()
 async def rolemenu(ctx):
-    message = await ctx.send("React to give yourself a role.\n \n :magnet: : `Physics`\n \n :brain: : `Behavioural Neuroscience` \n \n :test_tube: : `Chemistry` \n \n :atom: : `Biochemistry` \n \n :microscope: : `Biology` \n \n :star: : `Other`")
-    emojilist = ["🧲", "🧠", "🧪", "⚛", "🔬", "⭐"]
+    message = await ctx.send("React to give yourself a role.\n \n :magnet: : `Physics`\n \n :brain: : `Behavioural Neuroscience` \n \n :test_tube: : `Chemistry` \n \n :atom: : `Biochemistry` \n \n :microscope: : `Biology` \n \n :microbe: : `Cell and Molecular Biology` \n \n :deciduous_tree: : `Ecology` \n \n :computer: : `Systems and Information Biology` \n \n :thinking: : `Psychology` \n \n :muscle: : `Health, Kinesiology, and Applied Physiology` \n \n :earth_americas: : `Geography, Planning and Environment` \n \n :star: : `Other`")
+    emojilist = ["🧲", "🧠", "🧪", "⚛", "🔬", "🦠", "🌳", "💻", "🤔", "💪", "🌎", "⭐"]
     for emoji in emojilist:
         await message.add_reaction(emoji)
 
@@ -53,7 +53,7 @@ async def on_reaction_add(reaction, user):
     emoji = reaction.emoji
 
 
-    channelID = 799458309501091861
+    channelID = 852692727107289129
     if reaction.message.channel.id != channelID:
         return
 
@@ -62,6 +62,12 @@ async def on_reaction_add(reaction, user):
     Chemistry = discord.utils.get(user.guild.roles, name = "Chemistry")
     Biochemistry = discord.utils.get(user.guild.roles, name = "Biochemistry")
     Biology = discord.utils.get(user.guild.roles, name = "Biology")
+    Cellbio = discord.utils.get(user.guild.roles, name = "Cell and Molecular Biology")
+    Ecology = discord.utils.get(user.guild.roles, name = "Ecology")
+    Infobio = discord.utils.get(user.guild.roles, name = "Systems and Information Biology")
+    Psychology = discord.utils.get(user.guild.roles, name = "Psychology")
+    Exci = discord.utils.get(user.guild.roles, name = "Health, Kinesiology, and Applied Physiology")
+    Geography = discord.utils.get(user.guild.roles, name = "Geography, Planning and Environment")
     Others = discord.utils.get(user.guild.roles, name = "Other Programs")
 
     if user.bot:
@@ -77,6 +83,18 @@ async def on_reaction_add(reaction, user):
         await user.add_roles(Biochemistry)
     if emoji == "🔬":
         await user.add_roles(Biology)
+    if emoji == "🦠":
+        await user.add_roles(Cellbio)
+    if emoji == "🌳":
+        await user.add_roles(Ecology)
+    if emoji == "💻":
+        await user.add_roles(Infobio)
+    if emoji == "🤔":
+        await user.add_roles(Psychology)
+    if emoji == "💪":
+        await user.add_roles(Exci)
+    if emoji == "🌎":
+        await user.add_roles(Geography)
     if emoji == "⭐":
         await user.add_roles(Others)
 
@@ -87,7 +105,7 @@ async def on_raw_reaction_remove(payload):
     user = await guild.fetch_member(payload.user_id)
     
 
-    channelID = 799458309501091861
+    channelID = 852692727107289129
     if payload.channel_id != channelID:
         return
 
@@ -96,6 +114,12 @@ async def on_raw_reaction_remove(payload):
     Chemistry = discord.utils.get(guild.roles, name = "Chemistry")
     Biochemistry = discord.utils.get(guild.roles, name = "Biochemistry")
     Biology = discord.utils.get(guild.roles, name = "Biology")
+    Cellbio = discord.utils.get(guild.roles, name = "Cell and Molecular Biology")
+    Ecology = discord.utils.get(guild.roles, name = "Ecology")
+    Infobio = discord.utils.get(guild.roles, name = "Systems and Information Biology")
+    Psychology = discord.utils.get(guild.roles, name = "Psychology")
+    Exci = discord.utils.get(guild.roles, name = "Health, Kinesiology, and Applied Physiology")
+    Geography = discord.utils.get(guild.roles, name = "Geography, Planning and Environment")
     Others = discord.utils.get(guild.roles, name = "Other Programs")
 
     if user.bot:
@@ -111,6 +135,18 @@ async def on_raw_reaction_remove(payload):
         await user.remove_roles(Biochemistry)
     if str(emoji) == "🔬":
         await user.remove_roles(Biology)
+    if str(emoji) == "🦠":
+        await user.remove_roles(Cellbio)
+    if str(emoji) == "🌳":
+        await user.remove_roles(Ecology)
+    if str(emoji) == "💻":
+        await user.remove_roles(Infobio)
+    if str(emoji) == "🤔":
+        await user.remove_roles(Psychology)
+    if str(emoji) == "💪":
+        await user.remove_roles(Exci)
+    if str(emoji) == "🌎":
+        await user.remove_roles(Geography)
     if str(emoji) == "⭐":
         await user.remove_roles(Others)
 
