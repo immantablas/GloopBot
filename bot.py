@@ -48,6 +48,12 @@ async def rolemenu(ctx):
     for emoji in emojilist:
         await message.add_reaction(emoji)
 
+@client.command()
+@commands.is_owner()
+async def msg(ctx, user:discord.User, *, text:str):
+    await ctx.message.author.send(text)
+
+
 @client.event
 async def on_reaction_add(reaction, user):
     emoji = reaction.emoji
@@ -150,11 +156,13 @@ async def on_raw_reaction_remove(payload):
     if str(emoji) == "⭐":
         await user.remove_roles(Others)
 
+botmessage = "**Your invitation was deleted as per the rules of the ConU BIO/BIOCHEM/CHEM server.** \n If you wanted to send an invite to a specific individual, feel free to directly message them the invitation. This is done to avoid decisions regarding linking back to other groups to ensure that we're providing links to groups that adhere to Concordia's and Discord's guidelines and TOS."
+
 @client.event
 async def on_message(message):
     if "discord.gg" in message.content.lower():
         await message.delete()
-        await message.author.send("**Your discord invite was deleted as per the rules of the ConU BIO/BIOCHEM/CHEM server.** \n If you wanted to send a discord invite to a specific individual, feel free to directly message them the invitation.")
+        await message.author.send(botmessage)
         return
     await client.process_commands(message)
 
@@ -162,8 +170,25 @@ async def on_message(message):
 async def on_message_edit(before, message):
     if "discord.gg" in message.content.lower():
         await message.delete()
-        await message.author.send("**Your discord invite was deleted as per the rules of the ConU BIO/BIOCHEM/CHEM server.** \n If you wanted to send a discord invite to a specific individual, feel free to directly message them the invitation.")
+        await message.author.send(botmessage)
         return
-    
+
+@client.event
+async def on_message(message):
+    if "chat.whatsapp.com" in message.content.lower():
+        await message.delete()
+        await message.author.send(botmessage)
+        return
+    await client.process_commands(message)
+
+@client.event
+async def on_message_edit(before, message):
+    if "chat.whatsapp.com" in message.content.lower():
+        await message.delete()
+        await message.author.send(botmessage)
+        return
+
+
+
 
 client.run(SECRET_KEY)
