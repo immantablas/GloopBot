@@ -160,7 +160,7 @@ botmessage = "**Your invitation was deleted as per the rules of the ConU BIO/BIO
 
 @client.event
 async def on_message(message):
-    if "discord.gg" in message.content.lower():
+    if ("discord.gg" in message.content.lower()) or ("chat.whatsapp.com" in message.content.lower()):
         await message.delete()
         await message.author.send(botmessage)
         return
@@ -168,26 +168,10 @@ async def on_message(message):
 
 @client.event
 async def on_message_edit(before, message):
-    if "discord.gg" in message.content.lower():
+    if ("discord.gg" in message.content.lower()) or ("chat.whatsapp.com" in message.content.lower()):
         await message.delete()
         await message.author.send(botmessage)
         return
-
-@client.event
-async def on_message(message):
-    if "chat.whatsapp.com" in message.content.lower():
-        await message.delete()
-        await message.author.send(botmessage)
-        return
-    await client.process_commands(message)
-
-@client.event
-async def on_message_edit(before, message):
-    if "chat.whatsapp.com" in message.content.lower():
-        await message.delete()
-        await message.author.send(botmessage)
-        return
-
 
 
 
