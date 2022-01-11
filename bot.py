@@ -166,15 +166,16 @@ async def on_message(message):
             await message.delete()
             await message.author.send(botmessage)
             return
-        await client.process_commands(message)
+    await client.process_commands(message)
 
 @client.event
 async def on_message_edit(before, message):
-    for l in links:
+     for l in links:
         if (l in message.content.lower()):
             await message.delete()
             await message.author.send(botmessage)
             return
+
 
 
 client.run(SECRET_KEY)
